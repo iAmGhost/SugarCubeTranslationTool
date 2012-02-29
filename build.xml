@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="project" default="dist">
+	<property name="basedir" value="./"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="src.dir" value="src"/>
+	<property name="dist.dir" value="dist"/>
+	<property name="build.dir" value="build"/>
+	<property name="temp.dir" value="temp"/>
+	
+    <description>
+            description
+    </description>
+	
+    <target name="prepare">
+		<tstamp>
+    		<format property="DSTAMP" pattern="yyyy/mm/dd"/>
+			<format property="TSTAMP" pattern="HH:mm"/>
+    	</tstamp>
+		<echo message="Buld Start: ${DSTAMP}-${TSTAMP}"/>
+    </target>
+
+	<target name="clean" depends="prepare">
+		<!--<delete dir="${dist.dir}"/>
+		<delete dir="${build.dir}"/>
+		<delete dir="${temp.dir}"/>-->
+	</target>
+	
+	<target name="compile" depends="clean">
+		<mkdir dir="${build.dir}"/>
+
+		<javac deprecation="off" srcdir="${src.dir}" destdir="${build.dir}" listfiles="no"
+			failonerror="true" includeantruntime="true">
+			<classpath>
+				<pathelement path="./lib"/>
+				<fileset dir="./lib">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile">
+		<jar destfile="${dist.dir}/SugarCubeTranslationTool.jar" index="true">
+			<manifest>
+			        <attribute name="Main-Class" value="kr.iamghost.sugarcube.translationtool.Main"/>
+			 </manifest>
+
+			<fileset dir="./bin" includes="**/*.*"/>
+			<zipgroupfileset dir="${lib.dir}" includes="*.jar" />
+		</jar>
+		
+	</target>
+</project>

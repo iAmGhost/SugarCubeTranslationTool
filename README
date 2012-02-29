@@ -1,0 +1,11 @@
+Translation tool for Sugar Cube: Bittersweet Factory.
+
+I made this application for translating Sugar Cube:BF to Korean.
+
+Edit scripts/lang.lua for create own translation.
+
+Too lazy to write down english strings, just open original images(/Data/Image) for original strings.
+
+Note: This application doesn't have any content from Sugar Cube:BF, you'll need to buy it.
+
+Go http://www.turtle-cream.com/ and get some sugars.
