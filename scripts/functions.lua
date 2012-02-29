@@ -1,5 +1,5 @@
-engine:doFile("scripts/utils.lua", sugarCubePath)
-engine:doFile("scripts/pos.lua", sugarCubePath)
+require("scripts/utils")
+require("scripts/pos")
 
 function patchAchivements(path, imageeditor, filePrefix, collection)
 	for i = 1, 10, 1 do

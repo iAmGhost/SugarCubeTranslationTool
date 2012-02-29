@@ -23,11 +23,8 @@ public class LuaEngine {
 	
 	public void doFile(String filePath, String sugarCubePath) {
 		try {
-			String jarPath = LuaEngine.class.getProtectionDomain().
-					getCodeSource().getLocation().getPath();
-			jarPath = jarPath.substring(0, jarPath.lastIndexOf("/") + 1);
 			BufferedReader in = new BufferedReader(
-			        new InputStreamReader(new FileInputStream(jarPath + "/" + filePath), "UTF8"));
+			        new InputStreamReader(new FileInputStream(filePath), "UTF8"));
 
 			StringBuffer buffer = new StringBuffer();
 			String line;
@@ -36,7 +33,7 @@ public class LuaEngine {
 				buffer.append(line + "\n");
 			}
 
-			
+			System.out.println(buffer.toString());
 			doString(buffer.toString(), sugarCubePath);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
